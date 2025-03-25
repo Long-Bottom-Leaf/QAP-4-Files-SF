@@ -213,7 +213,7 @@ while True:
 
     # Perfrom required calculations
 
-        # Had a lot of trouble with this calculation, I'll admit I had to get chatGPT to help
+        # Had a lot of trouble with this calculation, I'll admit I had to get chatGPT to help cause every day the code would just.. stop working
     CarPrem = InsurPremium(NumbCars, BASE_PREM_RATE, DISCNT_ADD_CAR)        # Initializing CarPrem
 
     ExtraLiablCost, GlassCovergCost, LoanCarCost, TotalExtraCost = LiableLoan(
@@ -224,7 +224,7 @@ while True:
     HST = TotInsurance * HST_RATE
     TotCost = TotInsurance + HST
 
-        # Calculate total payment        
+        # Calculate total payment
     if PayOpt == "Downpay":
         InsurPay = TotCost - DownPay
     else:
@@ -283,16 +283,16 @@ while True:
     print(f"Extra Liability Coverage: {ExtraLiabl}                 Glass Coverage: {GlassCoverg}")
     print(f"Payment Option: {PayOpt}")
     if PayOpt == "Downpay":
-        print(f"Down Payment: ${DownPay:.2f}")
+        print(f"Down Payment: {A4FV.FDollar2(DownPay)}")
     print(f"-------------------------------------------------------------")
     print(f"Payment Information:")
-    print(f"Total Insurance Premium: ${TotInsurance:.2f}")
-    print(f"HST (15%): ${HST:.2f}                 Payment Method: {PayMethod:>10s}")
-    print(f"Total Cost: ${TotCost:.2f}                  Payment Due: {FirstPayDateDsp:>10s}")
+    print(f"Total Insurance Premium: {A4FV.FDollar2(TotInsurance)}")
+    print(f"HST (15%): {A4FV.FDollar2(HST)}                 Payment Method: {PayMethod:>10s}")
+    print(f"Total Cost: {A4FV.FDollar2(TotCost)}                 Payment Due: {FirstPayDateDsp:>10s}")
     if PayOpt in ["Monthly", "Downpay"]:
-        print(f"Monthly Payment: ${MonthlyPay:.2f} for 8 months")
+        print(f"Monthly Payment: {A4FV.FDollar2(MonthlyPay)} for 8 months")
     else:
-        print(f"Payment in Full: ${TotCost:.2f}")
+        print(f"Payment in Full: {A4FV.FDollar2(TotCost)}")
     print(f"-------------------------------------------------------------")
     print(f"  Claim Number #          Claim Date            Total Claim")
     for claim in Claims:
